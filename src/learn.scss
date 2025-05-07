@@ -1,0 +1,107 @@
+@use 'sass:math';
+
+@mixin buttonTheme($color:grey) {
+    background: $color;
+    color: white;
+    border-radius: 4px;   
+    border: none;
+}
+$font-stack: impact, sans-serif;
+$primary-color: grey;
+
+.todo-list{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    h1 {
+        background-color: #c8d2da;
+        color: white;
+        text-align: center;
+        letter-spacing: 2px;
+    }
+
+    // new todo item style
+    .todo-input{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+        input{
+            padding: 10px;
+            border-radius: 4px;    
+            width: math.div(350px,500px)*100%;
+        }
+        button{
+            @include buttonTheme;
+            width: 20%;
+            padding: 12px;
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 5px;
+    }
+
+    //  all todo item style
+    ul > {
+        li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            input[type="checkbox"]{
+                margin-right: 10px;
+                height: 20px;
+                width: 20px;
+                border: 1px #2f2f2f;
+                border-radius: 4px;
+
+                &:checked {
+                    appearance: none;
+                    -webkit-appearance: none;
+                    outline: none;
+                    cursor:pointer;
+                    vertical-align:middle;
+                    background-color: #008002;
+                    border: #008002;
+                    text-decoration: line-through;
+                    position: relative;
+                
+                    &::before {
+                        content: "X";
+                        font-size: 20px;
+                        position: absolute;
+                        top: 0;
+                        left: 3px;
+                        color: white;
+                    }
+                }
+
+            }
+    
+            .delete-button{
+                float: right;
+                border: none;
+                background-color: transparent;
+                width: 10%;
+                height: 100%;
+                vertical-align: middle;
+                padding: 5px 10px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .clear-button{
+        @include buttonTheme;
+        padding: 12px;
+        justify-self: flex-end;
+    }
+}
+
+
